@@ -1,0 +1,26 @@
+mat-dialog-content { 
+  padding-top: 24px !important; 
+}
+
+form { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+  min-width: 500px; 
+}
+
+mat-form-field { 
+  width: 100%; 
+}
+
+.delivery-line { 
+  display: grid; 
+  grid-template-columns: 2fr 1fr auto; 
+  gap: 8px; 
+  align-items: start; 
+  margin-bottom: 8px; 
+}
+
+h3 { 
+  margin: 16px 0 8px; 
+}

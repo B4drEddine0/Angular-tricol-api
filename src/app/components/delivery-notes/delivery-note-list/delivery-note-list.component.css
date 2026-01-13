@@ -1,0 +1,31 @@
+.page-header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 24px; 
+}
+
+h1 { 
+  margin: 0; 
+  color: #1e293b; 
+}
+
+table { 
+  width: 100%; 
+  background: white; 
+}
+
+.status-BROUILLON { 
+  background: #e5e7eb; 
+  color: #374151; 
+}
+
+.status-VALIDE { 
+  background: #d1fae5; 
+  color: #065f46; 
+}
+
+.status-ANNULE { 
+  background: #fee2e2; 
+  color: #991b1b; 
+}

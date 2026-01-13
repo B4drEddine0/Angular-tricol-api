@@ -1,0 +1,53 @@
+<div class="page-header">
+  <h1>Delivery Notes (Exit Orders)</h1>
+  <button mat-raised-button color="primary" (click)="openDialog()">
+    <mat-icon>add</mat-icon> New Delivery Note
+  </button>
+</div>
+<table mat-table [dataSource]="notes" class="mat-elevation-z2">
+  <ng-container matColumnDef="noteNumber">
+    <th mat-header-cell *matHeaderCellDef>Note #</th>
+    <td mat-cell *matCellDef="let n">{{n.noteNumber}}</td>
+  </ng-container>
+  <ng-container matColumnDef="exitDate">
+    <th mat-header-cell *matHeaderCellDef>Date</th>
+    <td mat-cell *matCellDef="let n">{{n.exitDate | date:'short'}}</td>
+  </ng-container>
+  <ng-container matColumnDef="workshop">
+    <th mat-header-cell *matHeaderCellDef>Workshop</th>
+    <td mat-cell *matCellDef="let n">{{n.workshop}}</td>
+  </ng-container>
+  <ng-container matColumnDef="exitReason">
+    <th mat-header-cell *matHeaderCellDef>Reason</th>
+    <td mat-cell *matCellDef="let n">{{n.exitReason}}</td>
+  </ng-container>
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let n">
+      <mat-chip [class]="'status-' + n.status">{{n.status}}</mat-chip>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let n">
+      @if (n.status === 'BROUILLON') {
+        <button mat-icon-button color="primary" (click)="openDialog(n)" title="Edit">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="validate(n.id)" title="Validate">
+          <mat-icon>check_circle</mat-icon>
+        </button>
+        <button mat-icon-button (click)="cancel(n.id)" title="Cancel">
+          <mat-icon>cancel</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="delete(n.id)" title="Delete">
+          <mat-icon>delete</mat-icon>
+        </button>
+      } @else {
+        <span>-</span>
+      }
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+</table>
