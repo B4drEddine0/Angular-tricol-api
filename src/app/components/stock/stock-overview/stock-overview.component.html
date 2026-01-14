@@ -1,0 +1,61 @@
+<h1>Stock Management</h1>
+<mat-tab-group>
+  <mat-tab label="Stock Overview">
+    @if (stockOverview.length > 0) {
+      <table mat-table [dataSource]="stockOverview" class="mat-elevation-z2">
+        <ng-container matColumnDef="productReference">
+          <th mat-header-cell *matHeaderCellDef>Reference</th>
+          <td mat-cell *matCellDef="let s">{{s.reference}}</td>
+        </ng-container>
+        <ng-container matColumnDef="productName">
+          <th mat-header-cell *matHeaderCellDef>Product</th>
+          <td mat-cell *matCellDef="let s">{{s.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="currentStock">
+          <th mat-header-cell *matHeaderCellDef>Current Stock</th>
+          <td mat-cell *matCellDef="let s">
+            <mat-chip [class.low-stock]="s.currentStock < s.reorderPoint">
+              {{s.currentStock | number:'1.2-2'}} {{s.unitOfMeasure}}
+            </mat-chip>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="reorderPoint">
+          <th mat-header-cell *matHeaderCellDef>Reorder Point</th>
+          <td mat-cell *matCellDef="let s">{{s.reorderPoint | number:'1.2-2'}} {{s.unitOfMeasure}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="stockColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: stockColumns;"></tr>
+      </table>
+    } @else {
+      <p class="no-data">No stock data available</p>
+    }
+  </mat-tab>
+  <mat-tab label="Stock Alerts">
+    @if (alerts.length > 0) {
+      <table mat-table [dataSource]="alerts" class="mat-elevation-z2">
+        <ng-container matColumnDef="productName">
+          <th mat-header-cell *matHeaderCellDef>Product</th>
+          <td mat-cell *matCellDef="let a">{{a.productName}}</td>
+        </ng-container>
+        <ng-container matColumnDef="currentStock">
+          <th mat-header-cell *matHeaderCellDef>Current Stock</th>
+          <td mat-cell *matCellDef="let a">{{a.currentStock | number:'1.2-2'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="reorderPoint">
+          <th mat-header-cell *matHeaderCellDef>Reorder Point</th>
+          <td mat-cell *matCellDef="let a">{{a.reorderPoint | number:'1.2-2'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="deficit">
+          <th mat-header-cell *matHeaderCellDef>Deficit</th>
+          <td mat-cell *matCellDef="let a">
+            <mat-chip class="shortage">{{a.deficit | number:'1.2-2'}}</mat-chip>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="alertColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: alertColumns;"></tr>
+      </table>
+    } @else {
+      <p class="no-data">No stock alerts</p>
+    }
+  </mat-tab>
+</mat-tab-group>

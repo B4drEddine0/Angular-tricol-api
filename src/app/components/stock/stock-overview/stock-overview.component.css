@@ -1,0 +1,26 @@
+h1 { 
+  margin-bottom: 24px; 
+  color: #1e293b; 
+}
+
+table { 
+  width: 100%; 
+  background: white; 
+  margin-top: 16px; 
+}
+
+.low-stock { 
+  background: #fca5a5; 
+  color: #7f1d1d; 
+}
+
+.shortage { 
+  background: #fca5a5; 
+  color: #7f1d1d; 
+}
+
+.no-data { 
+  padding: 20px; 
+  text-align: center; 
+  color: #64748b; 
+}
