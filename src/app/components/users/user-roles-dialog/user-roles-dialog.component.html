@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Manage Roles - {{user.username}}</h2>
+<mat-dialog-content>
+  <mat-selection-list [(ngModel)]="selectedRoles">
+    @for (role of availableRoles; track role) {
+      <mat-list-option [value]="role" [selected]="userRoles.includes(role)">
+        {{role}}
+      </mat-list-option>
+    }
+  </mat-selection-list>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Manage Permissions - {{user.username}}</h2>
+<mat-dialog-content>
+  @if (loading) {
+    <p>Loading permissions...</p>
+  } @else {
+    <div class="permissions-list">
+      @for (perm of permissions; track perm.name) {
+        <div class="permission-item">
+          <mat-checkbox 
+            [checked]="perm.granted" 
+            (change)="togglePermission(perm.name, $event.checked)">
+          </mat-checkbox>
+          <span class="permission-name">{{perm.name}}</span>
+          <mat-chip [class]="perm.source === 'ROLE' ? 'source-role' : 'source-custom'">
+            {{perm.source}}
+          </mat-chip>
+        </div>
+      }
+    </div>
+  }
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

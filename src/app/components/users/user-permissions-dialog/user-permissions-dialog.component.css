@@ -1,0 +1,35 @@
+mat-dialog-content { 
+  min-width: 500px; 
+  max-height: 500px; 
+}
+
+.permissions-list { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 8px; 
+}
+
+.permission-item { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  padding: 8px; 
+  border-bottom: 1px solid #e5e7eb; 
+}
+
+.permission-name { 
+  flex: 1; 
+  color: #1e293b; 
+  font-weight: 500; 
+  font-size: 14px; 
+}
+
+.source-role { 
+  background: #dbeafe; 
+  color: #1e40af; 
+}
+
+.source-custom { 
+  background: #fef3c7; 
+  color: #92400e; 
+}

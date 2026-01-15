@@ -1,0 +1,29 @@
+.page-header { 
+  margin-bottom: 24px; 
+}
+
+h1 { 
+  margin: 0; 
+  color: #1e293b; 
+}
+
+table { 
+  width: 100%; 
+  background: white; 
+}
+
+.role-chip { 
+  margin: 2px; 
+  background: #dbeafe; 
+  color: #1e40af; 
+}
+
+.status-active { 
+  background: #d1fae5; 
+  color: #065f46; 
+}
+
+.status-inactive { 
+  background: #fee2e2; 
+  color: #991b1b; 
+}
