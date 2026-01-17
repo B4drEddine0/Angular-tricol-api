@@ -1,59 +1,89 @@
-# FifoFront
+# TRICOL Supply Chain Management - Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.14.
+Modern enterprise Angular 20 application for managing supply chain operations including suppliers, products, orders, delivery notes, and stock with FIFO inventory management.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **Authentication**: Login/Register with JWT tokens
+- **Dashboard**: Overview with key metrics and quick actions
+- **Suppliers Management**: CRUD operations for suppliers
+- **Products Management**: CRUD operations with stock levels
+- **Orders Management**: Create, validate, and receive supplier orders
+- **Delivery Notes**: Create and validate exit orders with FIFO stock consumption
+- **Stock Management**: Real-time stock overview, alerts, and movements
+- **User Management**: Admin panel for managing users, roles, and permissions
 
-```bash
-ng serve
-```
+## Tech Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Angular 20
+- Angular Material (Professional UI components)
+- RxJS
+- TypeScript
+- JWT Authentication
 
-## Code scaffolding
+## Prerequisites
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Node.js 18+
+- npm
+- Backend API running on http://localhost:9091
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Installation
 
 ```bash
-ng test
+cd FifoFront
+npm install
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+## Running the Application
 
 ```bash
-ng e2e
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+The application will be available at `http://localhost:4200`
 
-## Additional Resources
+## Default Login
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+After registering a user, an admin needs to assign roles via the backend or database.
+
+## Project Structure
+
+```
+src/app/
+├── components/
+│   └── layout/          # Main layout with sidebar
+├── guards/              # Auth guard
+├── interceptors/        # JWT interceptor
+├── models/              # TypeScript interfaces
+├── pages/
+│   ├── auth/           # Login & Register
+│   ├── dashboard/      # Dashboard overview
+│   ├── suppliers/      # Suppliers CRUD
+│   ├── products/       # Products CRUD
+│   ├── orders/         # Orders management
+│   ├── delivery-notes/ # Delivery notes
+│   ├── stock/          # Stock overview
+│   └── admin/          # User management
+└── services/           # API services
+```
+
+## API Endpoints
+
+All endpoints are documented in `API_ENDPOINTS_COMPLETE.md`
+
+Base URL: `http://localhost:9091`
+
+## Features by Role
+
+- **ADMIN**: Full access to all features
+- **RESPONSABLE_ACHATS**: Suppliers, Products, Orders
+- **MAGASINIER**: Delivery notes, Stock management
+- **CHEF_ATELIER**: Read-only + Create exit orders
+
+## Build for Production
+
+```bash
+npm run build
+```
+
+Build artifacts will be in the `dist/` directory.
