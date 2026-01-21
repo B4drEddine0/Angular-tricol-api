@@ -495,6 +495,7 @@ PUT /api/v1/commandes/{id}/reception
 
 ---
 
+
 ## 📊 STOCK MANAGEMENT ENDPOINTS
 
 **Base Path:** `/api/v1/stock`
