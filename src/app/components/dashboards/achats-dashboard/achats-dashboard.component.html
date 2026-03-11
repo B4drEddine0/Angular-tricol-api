@@ -1,0 +1,79 @@
+<div class="dashboard-wrapper">
+  <div class="welcome-section">
+    <div>
+      <h1 class="welcome-title">Purchasing Manager</h1>
+      <p class="welcome-sub">Monitor orders, suppliers, and procurement status.</p>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card stagger-1">
+      <div class="stat-header">
+        <span class="stat-label">Pending Orders</span>
+        <div class="stat-icon-wrap amber"><mat-icon>receipt_long</mat-icon></div>
+      </div>
+      <div class="stat-value">{{pendingOrders}}</div>
+      <div class="stat-footer">
+        <span class="stat-trend warning"><mat-icon>schedule</mat-icon> Awaiting validation</span>
+      </div>
+    </div>
+    <div class="stat-card stagger-2">
+      <div class="stat-header">
+        <span class="stat-label">Validated Orders</span>
+        <div class="stat-icon-wrap indigo"><mat-icon>check_circle</mat-icon></div>
+      </div>
+      <div class="stat-value">{{validatedOrders}}</div>
+      <div class="stat-footer">
+        <span class="stat-trend up"><mat-icon>verified</mat-icon> Approved</span>
+      </div>
+    </div>
+    <div class="stat-card stagger-3">
+      <div class="stat-header">
+        <span class="stat-label">Stock Alerts</span>
+        <div class="stat-icon-wrap red"><mat-icon>notification_important</mat-icon></div>
+      </div>
+      <div class="stat-value">{{stockAlerts}}</div>
+      <div class="stat-footer">
+        <span class="stat-trend" [class.danger]="stockAlerts > 0" [class.up]="stockAlerts === 0">
+          <mat-icon>{{ stockAlerts > 0 ? 'warning' : 'check_circle' }}</mat-icon>
+          {{ stockAlerts > 0 ? 'Low stock items' : 'All good' }}
+        </span>
+      </div>
+    </div>
+    <div class="stat-card stagger-4">
+      <div class="stat-header">
+        <span class="stat-label">Active Suppliers</span>
+        <div class="stat-icon-wrap emerald"><mat-icon>apartment</mat-icon></div>
+      </div>
+      <div class="stat-value">{{totalSuppliers}}</div>
+      <div class="stat-footer">
+        <span class="stat-trend up"><mat-icon>trending_up</mat-icon> Business partners</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="quick-actions-card">
+    <div class="qa-header">
+      <h3>Quick Actions</h3>
+      <p>Frequently used operations</p>
+    </div>
+    <div class="qa-grid">
+      <a class="qa-item" routerLink="/orders">
+        <div class="qa-icon indigo"><mat-icon>add_shopping_cart</mat-icon></div>
+        <span class="qa-label">Create Order</span>
+      </a>
+      <a class="qa-item" routerLink="/orders">
+        <div class="qa-icon emerald"><mat-icon>check_circle</mat-icon></div>
+        <span class="qa-label">Validate Orders</span>
+      </a>
+      <a class="qa-item" routerLink="/suppliers">
+        <div class="qa-icon amber"><mat-icon>apartment</mat-icon></div>
+        <span class="qa-label">Suppliers</span>
+      </a>
+      <a class="qa-item" routerLink="/stock">
+        <div class="qa-icon cyan"><mat-icon>warehouse</mat-icon></div>
+        <span class="qa-label">Check Stock</span>
+      </a>
+    </div>
+  </div>
+</div>

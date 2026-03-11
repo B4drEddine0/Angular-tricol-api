@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SupplierService } from '../../../services/supplier.service';
+import { PermissionService } from '../../../services/permission.service';
 import { Supplier } from '../../../models/business.model';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 import { SupplierFormComponent } from '../supplier-form/supplier-form.component';
@@ -19,14 +20,23 @@ import { SupplierFormComponent } from '../supplier-form/supplier-form.component'
 })
 export class SupplierListComponent implements OnInit {
   private supplierService = inject(SupplierService);
+  private permissionService = inject(PermissionService);
   private dialog = inject(MatDialog);
   private snackBar = inject(MatSnackBar);
   
   suppliers: Supplier[] = [];
-  columns = ['raisonSociale', 'contactPerson', 'email', 'phone', 'city', 'actions'];
+  columns: string[] = [];
 
   ngOnInit() {
+    this.columns = ['raisonSociale', 'contactPerson', 'email', 'phone', 'city'];
+    if (this.hasPermission('UPDATE_SUPPLIER') || this.hasPermission('DELETE_SUPPLIER')) {
+      this.columns.push('actions');
+    }
     this.loadSuppliers();
+  }
+
+  hasPermission(permission: string): boolean {
+    return this.permissionService.hasPermission(permission);
   }
 
   loadSuppliers() {

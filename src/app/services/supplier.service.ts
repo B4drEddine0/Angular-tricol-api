@@ -6,7 +6,7 @@ import { Supplier } from '../models/business.model';
 @Injectable({ providedIn: 'root' })
 export class SupplierService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9091/api/v1/fournisseurs';
+  private baseUrl = 'https://springboot-tricol-api.onrender.com/api/v1/fournisseurs';
 
   getAll(): Observable<Supplier[]> {
     return this.http.get<Supplier[]>(this.baseUrl);

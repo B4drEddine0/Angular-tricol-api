@@ -1,14 +1,54 @@
-<div class="login-container">
-  <mat-card class="login-card">
-    <mat-card-header>
-      <mat-card-title>TRICOL Supply Chain</mat-card-title>
-      <mat-card-subtitle>Sign in to continue</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<div class="auth-shell">
+  <div class="auth-left">
+    <div class="auth-brand">
+      <div class="brand-logo">
+        <svg width="40" height="40" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="8" fill="url(#lg1)"/>
+          <path d="M8 10h12M8 14h8M8 18h10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <defs><linearGradient id="lg1" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#34D399"/><stop offset="1" stop-color="#10B981"/></linearGradient></defs>
+        </svg>
+      </div>
+      <h1 class="brand-name">TRICOL</h1>
+      <p class="brand-tagline">Intelligent Supply Chain Management</p>
+    </div>
+    <div class="auth-features">
+      <div class="feature-item">
+        <mat-icon>speed</mat-icon>
+        <div>
+          <strong>Real-time Tracking</strong>
+          <span>Monitor inventory and orders in real-time</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <mat-icon>security</mat-icon>
+        <div>
+          <strong>Role-Based Access</strong>
+          <span>Granular permissions for every team member</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <mat-icon>analytics</mat-icon>
+        <div>
+          <strong>Smart Analytics</strong>
+          <span>FIFO-based stock valuation & insights</span>
+        </div>
+      </div>
+    </div>
+    <p class="auth-footer-text">© 2026 TRICOL. Enterprise-grade supply chain platform.</p>
+  </div>
+
+  <div class="auth-right">
+    <div class="auth-form-wrapper">
+      <div class="auth-form-header">
+        <h2>Welcome back</h2>
+        <p>Sign in to your account to continue</p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
         <mat-form-field appearance="outline">
           <mat-label>Username</mat-label>
-          <input matInput formControlName="username" autocomplete="username">
+          <input matInput formControlName="username" autocomplete="username" placeholder="Enter your username">
+          <mat-icon matPrefix>person_outline</mat-icon>
           @if (loginForm.get('username')?.touched && loginForm.get('username')?.hasError('required')) {
             <mat-error>Username is required</mat-error>
           }
@@ -16,23 +56,25 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password" autocomplete="current-password">
+          <input matInput type="password" formControlName="password" autocomplete="current-password" placeholder="Enter your password">
+          <mat-icon matPrefix>lock_outline</mat-icon>
           @if (loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')) {
             <mat-error>Password is required</mat-error>
           }
         </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit" [disabled]="loading">
+        <button mat-raised-button color="primary" type="submit" [disabled]="loading" class="auth-submit">
           @if (loading) {
             <mat-spinner diameter="20"></mat-spinner>
           } @else {
-            Login
+            Sign in
           }
         </button>
       </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <p>Don't have an account? <a routerLink="/auth/register">Register here</a></p>
-    </mat-card-actions>
-  </mat-card>
+
+      <div class="auth-alt">
+        <p>Don't have an account? <a routerLink="/auth/register">Create one</a></p>
+      </div>
+    </div>
+  </div>
 </div>

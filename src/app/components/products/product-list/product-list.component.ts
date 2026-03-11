@@ -7,6 +7,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductService } from '../../../services/product.service';
+import { PermissionService } from '../../../services/permission.service';
 import { Product } from '../../../models/business.model';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 import { ProductFormComponent } from '../product-form/product-form.component';
@@ -20,14 +21,23 @@ import { ProductFormComponent } from '../product-form/product-form.component';
 })
 export class ProductListComponent implements OnInit {
   private productService = inject(ProductService);
+  private permissionService = inject(PermissionService);
   private dialog = inject(MatDialog);
   private snackBar = inject(MatSnackBar);
   
   products: Product[] = [];
-  columns = ['reference', 'name', 'category', 'unitPrice', 'currentStock', 'actions'];
+  columns: string[] = [];
 
   ngOnInit() {
+    this.columns = ['reference', 'name', 'category', 'unitPrice', 'currentStock'];
+    if (this.hasPermission('UPDATE_PRODUCT') || this.hasPermission('DELETE_PRODUCT')) {
+      this.columns.push('actions');
+    }
     this.loadProducts();
+  }
+
+  hasPermission(permission: string): boolean {
+    return this.permissionService.hasPermission(permission);
   }
 
   loadProducts() {

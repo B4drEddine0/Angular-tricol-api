@@ -3,84 +3,10 @@
 }
 
 h1 { 
-  margin-bottom: 24px; 
   color: #1e293b; 
 }
 
-.cards-grid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  gap: 20px; 
-  margin-bottom: 32px; 
-}
-
-.stat-card mat-card-content { 
-  display: flex; 
-  align-items: center; 
-  padding: 24px; 
-}
-
-.stat-icon { 
-  width: 60px; 
-  height: 60px; 
-  border-radius: 12px; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  margin-right: 16px; 
-}
-
-.stat-icon mat-icon { 
-  font-size: 32px; 
-  width: 32px; 
-  height: 32px; 
-  color: white; 
-}
-
-.stat-icon.products { 
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-}
-
-.stat-icon.orders { 
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); 
-}
-
-.stat-icon.alerts { 
-  background: linear-gradient(135deg, #ffa751 0%, #ffe259 100%); 
-}
-
-.stat-icon.value { 
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
-}
-
-.stat-info h3 { 
-  margin: 0; 
-  font-size: 32px; 
-  font-weight: bold; 
-  color: #1e293b; 
-}
-
-.stat-info p { 
-  margin: 4px 0 0; 
-  color: #64748b; 
-}
-
-.quick-actions h2 { 
-  margin-bottom: 16px; 
-  color: #1e293b; 
-}
-
-.actions-grid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-  gap: 16px; 
-}
-
-.actions-grid button { 
-  height: 56px; 
-  font-size: 16px; 
-}
-
-.actions-grid mat-icon { 
-  margin-right: 8px; 
+p {
+  color: #64748b;
+  font-size: 16px;
 }

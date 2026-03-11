@@ -1,26 +1,32 @@
-h1 { 
-  margin-bottom: 24px; 
-  color: #1e293b; 
+h1 {
+  margin-bottom: var(--space-6);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
 }
 
-table { 
-  width: 100%; 
-  background: white; 
-  margin-top: 16px; 
+table {
+  width: 100%;
+  margin-top: var(--space-4);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  animation: fadeInUp 0.4s ease-out 0.1s both;
 }
 
-.low-stock { 
-  background: #fca5a5; 
-  color: #7f1d1d; 
+.low-stock {
+  background: var(--tricol-error-light) !important;
+  color: var(--tricol-error-dark) !important;
 }
 
-.shortage { 
-  background: #fca5a5; 
-  color: #7f1d1d; 
+.shortage {
+  background: var(--tricol-error-light) !important;
+  color: var(--tricol-error-dark) !important;
 }
 
-.no-data { 
-  padding: 20px; 
-  text-align: center; 
-  color: #64748b; 
+.no-data {
+  padding: var(--space-10);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14px;
 }

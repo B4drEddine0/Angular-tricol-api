@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -17,12 +18,12 @@ import { AuthService } from '../../services/auth.service';
     CommonModule, 
     ReactiveFormsModule, 
     RouterModule, 
-    MatCardModule, 
     MatFormFieldModule, 
     MatInputModule, 
     MatButtonModule, 
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule
   ],
   templateUrl: './register.html',
   styleUrls: ['./register.css']

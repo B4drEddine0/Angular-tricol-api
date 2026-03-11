@@ -1,7 +1,570 @@
+/* ============================================================
+   TRICOL Design System — Global Styles
+   Modern SaaS Design Language (Stripe/Linear inspired)
+   ============================================================ */
+
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
-html, body {
+/* ---------- Design Tokens ---------- */
+:root {
+  /* Brand Palette — Emerald */
+  --tricol-primary: #10B981;
+  --tricol-primary-light: #34D399;
+  --tricol-primary-dark: #059669;
+  --tricol-primary-50: #ecfdf5;
+  --tricol-primary-100: #d1fae5;
+  --tricol-primary-200: #a7f3d0;
+  --tricol-primary-600: #059669;
+  --tricol-primary-700: #047857;
+
+  /* Accent — Amber */
+  --tricol-accent: #F59E0B;
+  --tricol-accent-light: #FCD34D;
+
+  /* Neutrals */
+  --tricol-gray-25: #fcfcfd;
+  --tricol-gray-50: #f9fafb;
+  --tricol-gray-100: #f3f4f6;
+  --tricol-gray-200: #e5e7eb;
+  --tricol-gray-300: #d1d5db;
+  --tricol-gray-400: #9ca3af;
+  --tricol-gray-500: #6b7280;
+  --tricol-gray-600: #4b5563;
+  --tricol-gray-700: #374151;
+  --tricol-gray-800: #1f2937;
+  --tricol-gray-900: #111827;
+  --tricol-gray-950: #030712;
+
+  /* Semantic */
+  --tricol-success: #10b981;
+  --tricol-success-light: #d1fae5;
+  --tricol-success-dark: #065f46;
+  --tricol-warning: #f59e0b;
+  --tricol-warning-light: #fef3c7;
+  --tricol-warning-dark: #92400e;
+  --tricol-error: #ef4444;
+  --tricol-error-light: #fee2e2;
+  --tricol-error-dark: #991b1b;
+  --tricol-info: #14b8a6;
+  --tricol-info-light: #ccfbf1;
+  --tricol-info-dark: #0f766e;
+
+  /* Surfaces */
+  --surface-primary: #ffffff;
+  --surface-secondary: #F4F6F8;
+  --surface-tertiary: var(--tricol-gray-100);
+  --surface-elevated: #ffffff;
+  --surface-overlay: rgba(0, 0, 0, 0.45);
+
+  /* Text */
+  --text-primary: var(--tricol-gray-900);
+  --text-secondary: var(--tricol-gray-500);
+  --text-tertiary: var(--tricol-gray-400);
+  --text-inverse: #ffffff;
+  --text-link: var(--tricol-primary);
+
+  /* Borders */
+  --border-primary: var(--tricol-gray-200);
+  --border-secondary: var(--tricol-gray-100);
+  --border-focus: var(--tricol-primary);
+
+  /* Shadows (Stripe-inspired elevation) */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 0 0 1px rgba(0,0,0,.03), 0 1px 3px rgba(0,0,0,.06);
+  --shadow-card-hover: 0 0 0 1px rgba(0,0,0,.03), 0 4px 12px rgba(0,0,0,.08);
+  --shadow-button: 0 1px 2px rgba(0,0,0,.08), 0 0 0 1px rgba(0,0,0,.04);
+  --shadow-input-focus: 0 0 0 3px rgba(16, 185, 129, 0.15);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 9999px;
+
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Sidebar */
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 72px;
+  --header-height: 64px;
+}
+
+/* ---------- CSS Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
   height: 100%;
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--surface-secondary);
 }
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+h1 { font-size: 28px; font-weight: 700; }
+h2 { font-size: 22px; font-weight: 600; }
+h3 { font-size: 18px; font-weight: 600; }
+h4 { font-size: 16px; font-weight: 600; }
+
+p { color: var(--text-secondary); line-height: 1.65; }
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--tricol-primary-dark);
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--tricol-gray-300);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tricol-gray-400);
+}
+
+/* ============================================================
+   Angular Material Overrides
+   ============================================================ */
+
+/* --- Buttons --- */
+.mat-mdc-raised-button,
+.mat-mdc-flat-button,
+.mat-mdc-unelevated-button {
+  font-family: var(--font-sans) !important;
+  font-weight: 500 !important;
+  font-size: 13.5px !important;
+  letter-spacing: -0.01em !important;
+  border-radius: var(--radius-md) !important;
+  transition: all var(--transition-base) !important;
+  text-transform: none !important;
+  box-shadow: var(--shadow-button) !important;
+}
+
+.mat-mdc-raised-button:hover,
+.mat-mdc-flat-button:hover,
+.mat-mdc-unelevated-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md) !important;
+}
+
+.mat-mdc-raised-button:active,
+.mat-mdc-flat-button:active {
+  transform: translateY(0);
+}
+
+/* Primary Button Override */
+.mat-mdc-raised-button.mat-primary,
+.mat-mdc-unelevated-button.mat-primary {
+  background-color: var(--tricol-primary) !important;
+  color: white !important;
+}
+
+.mat-mdc-raised-button.mat-primary:hover,
+.mat-mdc-unelevated-button.mat-primary:hover {
+  background-color: var(--tricol-primary-dark) !important;
+}
+
+/* Accent */
+.mat-mdc-raised-button.mat-accent {
+  background-color: var(--tricol-accent) !important;
+  color: white !important;
+}
+
+/* Icon Buttons */
+.mat-mdc-icon-button {
+  transition: all var(--transition-fast) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+.mat-mdc-icon-button:hover {
+  background-color: var(--tricol-gray-100) !important;
+}
+
+/* --- Cards --- */
+.mat-mdc-card {
+  font-family: var(--font-sans) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-card) !important;
+  border: 1px solid var(--border-secondary) !important;
+  transition: all var(--transition-smooth) !important;
+  overflow: hidden;
+}
+
+.mat-mdc-card:hover {
+  box-shadow: var(--shadow-card-hover) !important;
+}
+
+/* --- Tables --- */
+.mat-mdc-table {
+  font-family: var(--font-sans) !important;
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden !important;
+  border: 1px solid var(--border-secondary) !important;
+  box-shadow: none !important;
+}
+
+.mat-mdc-header-row {
+  background: var(--tricol-gray-50) !important;
+  border-bottom: 1px solid var(--border-primary) !important;
+}
+
+.mat-mdc-header-cell {
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: var(--text-secondary) !important;
+  padding: 14px 16px !important;
+  border-bottom: none !important;
+  white-space: nowrap;
+}
+
+.mat-mdc-row {
+  transition: background var(--transition-fast) !important;
+  border-bottom: 1px solid var(--border-secondary) !important;
+}
+
+.mat-mdc-row:hover {
+  background: var(--tricol-gray-25) !important;
+}
+
+.mat-mdc-row:last-child {
+  border-bottom: none !important;
+}
+
+.mat-mdc-cell {
+  font-size: 13.5px !important;
+  color: var(--text-primary) !important;
+  padding: 14px 16px !important;
+  border-bottom: none !important;
+}
+
+/* --- Form Fields --- */
+.mat-mdc-form-field {
+  font-family: var(--font-sans) !important;
+}
+
+.mat-mdc-text-field-wrapper {
+  border-radius: var(--radius-md) !important;
+}
+
+.mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading,
+.mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing {
+  border-color: var(--border-primary) !important;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing {
+  border-color: var(--tricol-gray-400) !important;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__trailing,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__notch {
+  border-color: var(--tricol-primary) !important;
+}
+
+.mat-mdc-form-field-focus-overlay {
+  background: transparent !important;
+}
+
+.mat-mdc-form-field-error {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+/* --- Chips (Status Badges) --- */
+.mat-mdc-chip {
+  font-family: var(--font-sans) !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  border-radius: var(--radius-full) !important;
+  height: 26px !important;
+  min-height: 26px !important;
+  padding: 0 10px !important;
+  letter-spacing: 0 !important;
+}
+
+/* --- Toolbar Override --- */
+.mat-toolbar {
+  font-family: var(--font-sans) !important;
+}
+
+/* --- Dialog Override --- */
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: var(--radius-xl) !important;
+  padding: var(--space-6) !important;
+}
+
+.mat-mdc-dialog-title {
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+  letter-spacing: -0.02em !important;
+  padding: 0 0 var(--space-4) 0 !important;
+}
+
+/* --- Tab Override --- */
+.mat-mdc-tab-group {
+  font-family: var(--font-sans) !important;
+}
+
+.mat-mdc-tab {
+  font-family: var(--font-sans) !important;
+  font-weight: 500 !important;
+  font-size: 13.5px !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+}
+
+.mat-mdc-tab-header {
+  border-bottom: 1px solid var(--border-primary) !important;
+}
+
+.mdc-tab-indicator__content--underline {
+  border-color: var(--tricol-primary) !important;
+}
+
+/* --- Snackbar Override --- */
+.mat-mdc-snack-bar-container {
+  border-radius: var(--radius-lg) !important;
+  font-family: var(--font-sans) !important;
+}
+
+/* --- List Override --- */
+.mat-mdc-list-item {
+  font-family: var(--font-sans) !important;
+}
+
+/* --- Tooltip Override --- */
+.mat-mdc-tooltip {
+  font-family: var(--font-sans) !important;
+  font-size: 12px !important;
+}
+
+/* ============================================================
+   Utility Classes
+   ============================================================ */
+
+/* Status badge colors (reusable across all tables) */
+.status-EN_ATTENTE,
+.status-badge-pending {
+  background: var(--tricol-warning-light) !important;
+  color: var(--tricol-warning-dark) !important;
+}
+
+.status-VALIDEE,
+.status-badge-validated {
+  background: var(--tricol-info-light) !important;
+  color: var(--tricol-info-dark) !important;
+}
+
+.status-LIVREE,
+.status-badge-delivered {
+  background: var(--tricol-success-light) !important;
+  color: var(--tricol-success-dark) !important;
+}
+
+.status-ANNULEE,
+.status-ANNULE,
+.status-badge-cancelled {
+  background: var(--tricol-error-light) !important;
+  color: var(--tricol-error-dark) !important;
+}
+
+.status-BROUILLON,
+.status-badge-draft {
+  background: var(--tricol-gray-100) !important;
+  color: var(--tricol-gray-700) !important;
+}
+
+.status-VALIDE,
+.status-badge-valid {
+  background: var(--tricol-success-light) !important;
+  color: var(--tricol-success-dark) !important;
+}
+
+.status-active {
+  background: var(--tricol-success-light) !important;
+  color: var(--tricol-success-dark) !important;
+}
+
+.status-inactive {
+  background: var(--tricol-error-light) !important;
+  color: var(--tricol-error-dark) !important;
+}
+
+.low-stock {
+  background: var(--tricol-error-light) !important;
+  color: var(--tricol-error-dark) !important;
+}
+
+.shortage {
+  background: var(--tricol-error-light) !important;
+  color: var(--tricol-error-dark) !important;
+}
+
+.role-chip {
+  background: var(--tricol-primary-100) !important;
+  color: var(--tricol-primary-700) !important;
+}
+
+/* Page Container */
+.page-container {
+  padding: 0;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Page Header Pattern */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+}
+
+/* Elevation for mat-table removal (use card border instead) */
+.mat-elevation-z2 {
+  box-shadow: none !important;
+  border: 1px solid var(--border-secondary) !important;
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden !important;
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Stagger animation support */
+.stagger-1 { animation-delay: 50ms; }
+.stagger-2 { animation-delay: 100ms; }
+.stagger-3 { animation-delay: 150ms; }
+.stagger-4 { animation-delay: 200ms; }
+.stagger-5 { animation-delay: 250ms; }
+.stagger-6 { animation-delay: 300ms; }

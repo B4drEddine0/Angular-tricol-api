@@ -17,13 +17,13 @@ import { Product } from '../../../models/business.model';
 export class ProductFormComponent {
   private fb = inject(FormBuilder);
   data: Product | null = null;
-  
+
   form = this.fb.group({
     reference: ['', Validators.required],
     name: ['', Validators.required],
     description: [''],
     category: ['', Validators.required],
-    unitPrice: [0, [Validators.required, Validators.min(0)]],
+    unitPrice: [0, [Validators.required, Validators.min(5)]],
     unitOfMeasure: ['', Validators.required],
     reorderPoint: [0, Validators.min(0)]
   });

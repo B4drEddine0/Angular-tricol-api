@@ -1,36 +1,41 @@
-.page-header { 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  margin-bottom: 24px; 
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
 }
 
-h1 { 
-  margin: 0; 
-  color: #1e293b; 
+h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
 }
 
-table { 
-  width: 100%; 
-  background: white; 
+table {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  animation: fadeInUp 0.4s ease-out 0.1s both;
 }
 
-.status-EN_ATTENTE { 
-  background: #fef3c7; 
-  color: #92400e; 
+.status-EN_ATTENTE {
+  background: var(--tricol-warning-light) !important;
+  color: var(--tricol-warning-dark) !important;
 }
 
-.status-VALIDEE { 
-  background: #dbeafe; 
-  color: #1e40af; 
+.status-VALIDEE {
+  background: var(--tricol-info-light) !important;
+  color: var(--tricol-info-dark) !important;
 }
 
-.status-LIVREE { 
-  background: #d1fae5; 
-  color: #065f46; 
+.status-LIVREE {
+  background: var(--tricol-success-light) !important;
+  color: var(--tricol-success-dark) !important;
 }
 
-.status-ANNULEE { 
-  background: #fee2e2; 
-  color: #991b1b; 
+.status-ANNULEE {
+  background: var(--tricol-error-light) !important;
+  color: var(--tricol-error-dark) !important;
 }

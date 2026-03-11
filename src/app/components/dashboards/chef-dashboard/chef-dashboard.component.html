@@ -1,0 +1,76 @@
+<div class="dashboard-wrapper">
+  <div class="welcome-section">
+    <div>
+      <h1 class="welcome-title">Workshop Manager</h1>
+      <p class="welcome-sub">Track stock availability and delivery requests.</p>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card stagger-1">
+      <div class="stat-header">
+        <span class="stat-label">Available Stock</span>
+        <div class="stat-icon-wrap indigo"><mat-icon>warehouse</mat-icon></div>
+      </div>
+      <div class="stat-value">{{availableStock}}</div>
+      <div class="stat-footer">
+        <span class="stat-trend up"><mat-icon>check_circle</mat-icon> Items in stock</span>
+      </div>
+    </div>
+    <div class="stat-card stagger-2">
+      <div class="stat-header">
+        <span class="stat-label">Low Stock Alerts</span>
+        <div class="stat-icon-wrap amber"><mat-icon>notification_important</mat-icon></div>
+      </div>
+      <div class="stat-value">{{stockAlerts}}</div>
+      <div class="stat-footer">
+        <span class="stat-trend warning"><mat-icon>warning</mat-icon> Require attention</span>
+      </div>
+    </div>
+    <div class="stat-card stagger-3">
+      <div class="stat-header">
+        <span class="stat-label">My Deliveries</span>
+        <div class="stat-icon-wrap cyan"><mat-icon>local_shipping</mat-icon></div>
+      </div>
+      <div class="stat-value">{{myDeliveries}}</div>
+      <div class="stat-footer">
+        <span class="stat-trend up"><mat-icon>receipt_long</mat-icon> Delivery requests</span>
+      </div>
+    </div>
+    <div class="stat-card stagger-4">
+      <div class="stat-header">
+        <span class="stat-label">Total Products</span>
+        <div class="stat-icon-wrap emerald"><mat-icon>inventory_2</mat-icon></div>
+      </div>
+      <div class="stat-value">{{totalProducts}}</div>
+      <div class="stat-footer">
+        <span class="stat-trend up"><mat-icon>trending_up</mat-icon> In catalog</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="quick-actions-card">
+    <div class="qa-header">
+      <h3>Quick Actions</h3>
+      <p>Frequently used operations</p>
+    </div>
+    <div class="qa-grid">
+      <a class="qa-item" routerLink="/delivery-notes">
+        <div class="qa-icon indigo"><mat-icon>add_shopping_cart</mat-icon></div>
+        <span class="qa-label">Request Materials</span>
+      </a>
+      <a class="qa-item" routerLink="/stock">
+        <div class="qa-icon amber"><mat-icon>warehouse</mat-icon></div>
+        <span class="qa-label">Check Stock</span>
+      </a>
+      <a class="qa-item" routerLink="/products">
+        <div class="qa-icon emerald"><mat-icon>inventory_2</mat-icon></div>
+        <span class="qa-label">View Products</span>
+      </a>
+      <a class="qa-item" routerLink="/delivery-notes">
+        <div class="qa-icon cyan"><mat-icon>list_alt</mat-icon></div>
+        <span class="qa-label">My Requests</span>
+      </a>
+    </div>
+  </div>
+</div>

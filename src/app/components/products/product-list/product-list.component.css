@@ -1,21 +1,26 @@
-.page-header { 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  margin-bottom: 24px; 
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
 }
 
-h1 { 
-  margin: 0; 
-  color: #1e293b; 
+h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
 }
 
-table { 
-  width: 100%; 
-  background: white; 
+table {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  animation: fadeInUp 0.4s ease-out 0.1s both;
 }
 
-.low-stock { 
-  background: #fca5a5; 
-  color: #7f1d1d; 
+.low-stock {
+  background: var(--tricol-error-light) !important;
+  color: var(--tricol-error-dark) !important;
 }

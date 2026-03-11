@@ -6,7 +6,7 @@ import { SupplierOrder } from '../models/business.model';
 @Injectable({ providedIn: 'root' })
 export class OrderService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9091/api/v1/commandes';
+  private baseUrl = 'https://springboot-tricol-api.onrender.com/api/v1/commandes';
 
   getAll(status?: string, startDate?: string, endDate?: string): Observable<SupplierOrder[]> {
     let params = new HttpParams();

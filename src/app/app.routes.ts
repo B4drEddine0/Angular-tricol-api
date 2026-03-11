@@ -1,18 +1,19 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { LayoutComponent } from './components/layout/layout.component';
-import { LoginComponent } from './pages/auth/login.component';
-import { RegisterComponent } from './pages/auth/register.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { SuppliersComponent } from './pages/suppliers/suppliers.component';
-import { ProductsComponent } from './pages/products/products.component';
-import { OrdersComponent } from './pages/orders/orders.component';
-import { DeliveryNotesComponent } from './pages/delivery-notes/delivery-notes.component';
-import { StockComponent } from './pages/stock/stock.component';
-import { UsersComponent } from './pages/admin/users.component';
+import { LoginComponent } from './pages/auth/login';
+import { RegisterComponent } from './pages/auth/register';
+import { LandingComponent } from './pages/landing/landing.component';
+import { DashboardComponent } from './pages/dashboard/dashboard';
+import { SuppliersComponent } from './pages/suppliers/suppliers';
+import { ProductsComponent } from './pages/products/products';
+import { OrdersComponent } from './pages/orders/orders';
+import { DeliveryNotesComponent } from './pages/delivery-notes/delivery-notes';
+import { StockComponent } from './pages/stock/stock';
+import { UsersComponent } from './pages/admin/users';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', component: LandingComponent },
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/register', component: RegisterComponent },
   {

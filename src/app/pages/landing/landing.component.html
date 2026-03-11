@@ -1,0 +1,183 @@
+<!-- Hero -->
+<section class="hero">
+  <nav class="landing-nav">
+    <div class="nav-brand">
+      <svg width="32" height="32" viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="8" fill="url(#lgH)"/>
+        <path d="M8 10h12M8 14h8M8 18h10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <defs><linearGradient id="lgH" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#34D399"/><stop offset="1" stop-color="#10B981"/></linearGradient></defs>
+      </svg>
+      <span>TRICOL</span>
+    </div>
+    <div class="nav-links">
+      <a href="#platform">Platform</a>
+      <a href="#modules">Modules</a>
+      <a href="#roles">Roles</a>
+      <a routerLink="/auth/login" mat-raised-button color="primary" class="nav-cta">Access Portal</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <mat-icon>verified</mat-icon>
+      <span>Internal Operations Platform</span>
+    </div>
+    <h1>Enterprise Supply Chain<br><span class="gradient-text">Management</span> Platform</h1>
+    <p class="hero-sub">
+      Centralized control over procurement, inventory, and distribution.
+      FIFO-based stock valuation, role-based workflows, and real-time
+      operational visibility across all departments.
+    </p>
+    <div class="hero-actions">
+      <a routerLink="/auth/login" mat-raised-button color="primary" class="hero-primary">
+        Access Portal
+        <mat-icon>arrow_forward</mat-icon>
+      </a>
+      <a routerLink="/auth/register" mat-stroked-button class="hero-secondary">
+        Request Access
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <mat-icon class="stat-icon">sync_alt</mat-icon>
+        <span>FIFO Inventory Engine</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <mat-icon class="stat-icon">speed</mat-icon>
+        <span>Real-time Stock Control</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <mat-icon class="stat-icon">lock</mat-icon>
+        <span>Role-Based Workflow</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <mat-icon class="stat-icon">hub</mat-icon>
+        <span>Multi-Dept Coordination</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-glow"></div>
+</section>
+
+<!-- Platform -->
+<section id="platform" class="features-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-label">Platform Overview</span>
+      <h2>Operational control across<br>your entire supply chain</h2>
+      <p>Purpose-built modules for procurement, warehouse operations, and production coordination.</p>
+    </div>
+    <div class="features-grid">
+      @for (feature of features; track feature.title) {
+        <div class="feature-card">
+          <div class="feature-icon-wrap">
+            <mat-icon>{{ feature.icon }}</mat-icon>
+          </div>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Modules -->
+<section id="modules" class="modules-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-label">Core Modules</span>
+      <h2>Integrated modules for<br>end-to-end operations</h2>
+      <p>Each module handles a critical segment of the supply chain lifecycle.</p>
+    </div>
+    <div class="modules-grid">
+      @for (mod of modules; track mod.title) {
+        <div class="module-card">
+          <div class="module-number">{{ mod.num }}</div>
+          <h3>{{ mod.title }}</h3>
+          <p>{{ mod.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Roles -->
+<section id="roles" class="roles-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-label">Access Control</span>
+      <h2>Role-based dashboards<br>for every department</h2>
+      <p>Each role receives a tailored workspace with scoped permissions and workflows.</p>
+    </div>
+    <div class="roles-grid">
+      @for (role of roles; track role.name; let i = $index) {
+        <div class="role-card" [style.animation-delay]="i * 80 + 'ms'">
+          <div class="role-icon-wrap">
+            <mat-icon>{{ role.icon }}</mat-icon>
+          </div>
+          <h3>{{ role.name }}</h3>
+          <p>{{ role.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Numbers -->
+<section class="numbers-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-label">Platform Capacity</span>
+      <h2>Built for enterprise-scale<br>supply chain operations</h2>
+      <p>Designed to handle the complexity and volume of multi-department organizations.</p>
+    </div>
+    <div class="numbers-grid">
+      @for (stat of stats; track stat.label) {
+        <div class="number-card">
+          <div class="number-value">
+            <span class="number-count">{{ stat.value }}</span>
+            <span class="number-suffix">{{ stat.suffix }}</span>
+          </div>
+          <div class="number-label">{{ stat.label }}</div>
+          <div class="number-desc">{{ stat.desc }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-container cta-content">
+    <h2>Need access to the platform?</h2>
+    <p>Sign in with your enterprise credentials or contact your IT administrator for account provisioning.</p>
+    <div class="cta-actions">
+      <a routerLink="/auth/login" mat-raised-button color="primary" class="hero-primary">
+        Access Portal
+        <mat-icon>arrow_forward</mat-icon>
+      </a>
+      <a routerLink="/auth/register" mat-stroked-button class="hero-secondary">
+        Request Access
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="landing-footer">
+  <div class="section-container footer-inner">
+    <div class="footer-brand">
+      <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="8" fill="url(#lgF)"/>
+        <path d="M8 10h12M8 14h8M8 18h10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <defs><linearGradient id="lgF" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#34D399"/><stop offset="1" stop-color="#10B981"/></linearGradient></defs>
+      </svg>
+      <span>TRICOL</span>
+    </div>
+    <p>&copy; 2026 TRICOL — Enterprise Supply Chain Management. Internal use only.</p>
+  </div>
+</footer>

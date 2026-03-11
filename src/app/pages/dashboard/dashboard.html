@@ -1,58 +1,14 @@
 <div class="dashboard">
-  <h1>Dashboard Overview</h1>
-  <div class="cards-grid">
-    <mat-card class="stat-card">
-      <mat-card-content>
-        <div class="stat-icon products"><mat-icon>inventory</mat-icon></div>
-        <div class="stat-info">
-          <h3>{{totalProducts}}</h3>
-          <p>Total Products</p>
-        </div>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="stat-card">
-      <mat-card-content>
-        <div class="stat-icon orders"><mat-icon>shopping_cart</mat-icon></div>
-        <div class="stat-info">
-          <h3>{{pendingOrders}}</h3>
-          <p>Pending Orders</p>
-        </div>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="stat-card">
-      <mat-card-content>
-        <div class="stat-icon alerts"><mat-icon>warning</mat-icon></div>
-        <div class="stat-info">
-          <h3>{{stockAlerts}}</h3>
-          <p>Stock Alerts</p>
-        </div>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="stat-card">
-      <mat-card-content>
-        <div class="stat-icon value"><mat-icon>attach_money</mat-icon></div>
-        <div class="stat-info">
-          <h3>{{stockValue | number:'1.2-2'}}</h3>
-          <p>Stock Value</p>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="quick-actions">
-    <h2>Quick Actions</h2>
-    <div class="actions-grid">
-      <button mat-raised-button color="primary" routerLink="/orders">
-        <mat-icon>add</mat-icon> New Order
-      </button>
-      <button mat-raised-button color="accent" routerLink="/delivery-notes">
-        <mat-icon>local_shipping</mat-icon> New Delivery
-      </button>
-      <button mat-raised-button routerLink="/stock">
-        <mat-icon>warehouse</mat-icon> View Stock
-      </button>
-      <button mat-raised-button routerLink="/suppliers">
-        <mat-icon>business</mat-icon> Manage Suppliers
-      </button>
-    </div>
-  </div>
+  @if (userRole === 'ADMIN') {
+    <app-admin-dashboard></app-admin-dashboard>
+  } @else if (userRole === 'RESPONSABLE_ACHATS') {
+    <app-achats-dashboard></app-achats-dashboard>
+  } @else if (userRole === 'MAGASINIER') {
+    <app-magasinier-dashboard></app-magasinier-dashboard>
+  } @else if (userRole === 'CHEF_ATELIER') {
+    <app-chef-dashboard></app-chef-dashboard>
+  } @else {
+    <h1>Welcome to TRICOL Supply Chain</h1>
+    <p>Please contact your administrator to assign you a role.</p>
+  }
 </div>

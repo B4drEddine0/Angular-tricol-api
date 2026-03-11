@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -17,12 +18,12 @@ import { AuthService } from '../../services/auth.service';
     CommonModule, 
     ReactiveFormsModule, 
     RouterModule, 
-    MatCardModule, 
     MatFormFieldModule, 
     MatInputModule, 
     MatButtonModule, 
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule
   ],
   templateUrl: './login.html',
   styleUrls: ['./login.css']
@@ -43,7 +44,8 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.loading = true;
       this.authService.login(this.loginForm.value as any).subscribe({
-        next: () => {
+        next: (response) => {
+          console.log('Login response:', response);
           this.router.navigate(['/dashboard']);
         },
         error: (err) => {

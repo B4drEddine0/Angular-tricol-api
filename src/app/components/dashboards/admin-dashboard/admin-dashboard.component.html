@@ -1,0 +1,199 @@
+<div class="dashboard-wrapper">
+  <!-- Welcome -->
+  <div class="welcome-section">
+    <div>
+      <h1 class="welcome-title">{{ greeting }}, Admin</h1>
+      <p class="welcome-sub">Here's what's happening across your supply chain today.</p>
+    </div>
+    <div class="welcome-actions">
+      <button mat-raised-button color="primary" routerLink="/orders" class="action-btn-primary">
+        <mat-icon>add</mat-icon> New Order
+      </button>
+    </div>
+  </div>
+
+  <!-- Stats Grid -->
+  <div class="stats-grid">
+    <div class="stat-card stagger-1">
+      <div class="stat-card-inner">
+        <div class="stat-header">
+          <span class="stat-label">Total Products</span>
+          <div class="stat-icon-wrap indigo"><mat-icon>inventory_2</mat-icon></div>
+        </div>
+        <div class="stat-value">{{ totalProducts }}</div>
+        <div class="stat-footer">
+          <span class="stat-trend up"><mat-icon>trending_up</mat-icon> Active catalog</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-card stagger-2">
+      <div class="stat-card-inner">
+        <div class="stat-header">
+          <span class="stat-label">Pending Orders</span>
+          <div class="stat-icon-wrap amber"><mat-icon>receipt_long</mat-icon></div>
+        </div>
+        <div class="stat-value">{{ pendingOrders }}</div>
+        <div class="stat-footer">
+          <span class="stat-trend warning"><mat-icon>schedule</mat-icon> Awaiting validation</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-card stagger-3">
+      <div class="stat-card-inner">
+        <div class="stat-header">
+          <span class="stat-label">Stock Alerts</span>
+          <div class="stat-icon-wrap red"><mat-icon>notification_important</mat-icon></div>
+        </div>
+        <div class="stat-value">{{ stockAlerts }}</div>
+        <div class="stat-footer">
+          <span class="stat-trend" [class.danger]="stockAlerts > 0" [class.up]="stockAlerts === 0">
+            <mat-icon>{{ stockAlerts > 0 ? 'warning' : 'check_circle' }}</mat-icon>
+            {{ stockAlerts > 0 ? 'Items below reorder point' : 'All good' }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-card stagger-4">
+      <div class="stat-card-inner">
+        <div class="stat-header">
+          <span class="stat-label">Stock Value</span>
+          <div class="stat-icon-wrap emerald"><mat-icon>account_balance_wallet</mat-icon></div>
+        </div>
+        <div class="stat-value">{{ stockValue | number:'1.0-0' }} <span class="stat-currency">MAD</span></div>
+        <div class="stat-footer">
+          <span class="stat-trend up"><mat-icon>trending_up</mat-icon> Total valuation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="charts-row">
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <h3 class="chart-title">Weekly Activity</h3>
+          <p class="chart-sub">Orders processed this week</p>
+        </div>
+      </div>
+      <div class="chart-body">
+        <canvas baseChart
+          [data]="activityChartData"
+          [options]="activityChartOptions"
+          type="bar">
+        </canvas>
+      </div>
+    </div>
+
+    <div class="chart-card chart-card-sm">
+      <div class="chart-header">
+        <div>
+          <h3 class="chart-title">Order Status</h3>
+          <p class="chart-sub">Distribution by status</p>
+        </div>
+      </div>
+      <div class="chart-body doughnut-body">
+        <canvas baseChart
+          [data]="orderChartData"
+          [options]="orderChartOptions"
+          type="doughnut">
+        </canvas>
+        <div class="doughnut-legend">
+          <div class="legend-row"><span class="legend-dot amber-bg"></span><span>Pending</span></div>
+          <div class="legend-row"><span class="legend-dot indigo-bg"></span><span>Validated</span></div>
+          <div class="legend-row"><span class="legend-dot emerald-bg"></span><span>Delivered</span></div>
+          <div class="legend-row"><span class="legend-dot red-bg"></span><span>Cancelled</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Row -->
+  <div class="bottom-row">
+    <!-- Quick Actions -->
+    <div class="quick-actions-card">
+      <div class="qa-header">
+        <h3>Quick Actions</h3>
+        <p>Frequently used operations</p>
+      </div>
+      <div class="qa-grid">
+        <a class="qa-item" routerLink="/orders">
+          <div class="qa-icon indigo"><mat-icon>add_shopping_cart</mat-icon></div>
+          <span class="qa-label">New Order</span>
+        </a>
+        <a class="qa-item" routerLink="/delivery-notes">
+          <div class="qa-icon cyan"><mat-icon>local_shipping</mat-icon></div>
+          <span class="qa-label">New Delivery</span>
+        </a>
+        <a class="qa-item" routerLink="/admin/users">
+          <div class="qa-icon violet"><mat-icon>person_add</mat-icon></div>
+          <span class="qa-label">Manage Users</span>
+        </a>
+        <a class="qa-item" routerLink="/suppliers">
+          <div class="qa-icon emerald"><mat-icon>apartment</mat-icon></div>
+          <span class="qa-label">Suppliers</span>
+        </a>
+        <a class="qa-item" routerLink="/stock">
+          <div class="qa-icon amber"><mat-icon>warehouse</mat-icon></div>
+          <span class="qa-label">Stock</span>
+        </a>
+        <a class="qa-item" routerLink="/products">
+          <div class="qa-icon rose"><mat-icon>inventory_2</mat-icon></div>
+          <span class="qa-label">Products</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <div class="overview-card">
+      <div class="overview-header">
+        <h3>Platform Overview</h3>
+      </div>
+      <div class="overview-list">
+        <div class="overview-item">
+          <div class="ov-left">
+            <div class="ov-icon indigo"><mat-icon>group</mat-icon></div>
+            <div>
+              <div class="ov-label">Total Users</div>
+              <div class="ov-sub">Active team members</div>
+            </div>
+          </div>
+          <span class="ov-value">{{ totalUsers }}</span>
+        </div>
+        <div class="overview-item">
+          <div class="ov-left">
+            <div class="ov-icon emerald"><mat-icon>apartment</mat-icon></div>
+            <div>
+              <div class="ov-label">Suppliers</div>
+              <div class="ov-sub">Business partners</div>
+            </div>
+          </div>
+          <span class="ov-value">{{ totalSuppliers }}</span>
+        </div>
+        <div class="overview-item">
+          <div class="ov-left">
+            <div class="ov-icon amber"><mat-icon>inventory_2</mat-icon></div>
+            <div>
+              <div class="ov-label">Products</div>
+              <div class="ov-sub">In catalog</div>
+            </div>
+          </div>
+          <span class="ov-value">{{ totalProducts }}</span>
+        </div>
+        <div class="overview-item">
+          <div class="ov-left">
+            <div class="ov-icon red"><mat-icon>warning_amber</mat-icon></div>
+            <div>
+              <div class="ov-label">Low Stock Items</div>
+              <div class="ov-sub">Require attention</div>
+            </div>
+          </div>
+          <span class="ov-value danger-text">{{ stockAlerts }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

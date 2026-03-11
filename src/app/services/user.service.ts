@@ -6,7 +6,7 @@ import { User, Permission } from '../models/auth.model';
 @Injectable({ providedIn: 'root' })
 export class UserService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9091/api/users';
+  private baseUrl = 'https://springboot-tricol-api.onrender.com/api/users';
 
   getAll(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl);

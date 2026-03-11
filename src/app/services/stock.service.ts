@@ -6,7 +6,7 @@ import { StockOverview, StockDetail, StockMovement, StockAlert } from '../models
 @Injectable({ providedIn: 'root' })
 export class StockService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9091/api/v1/stock';
+  private baseUrl = 'https://springboot-tricol-api.onrender.com/api/v1/stock';
 
   getOverview(): Observable<StockOverview[]> {
     return this.http.get<StockOverview[]>(this.baseUrl);

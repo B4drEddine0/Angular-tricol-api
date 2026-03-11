@@ -6,7 +6,7 @@ import { DeliveryNote } from '../models/business.model';
 @Injectable({ providedIn: 'root' })
 export class DeliveryNoteService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9091/api/v1/bons-sortie';
+  private baseUrl = 'https://springboot-tricol-api.onrender.com/api/v1/bons-sortie';
 
   getAll(): Observable<DeliveryNote[]> {
     return this.http.get<DeliveryNote[]>(this.baseUrl);

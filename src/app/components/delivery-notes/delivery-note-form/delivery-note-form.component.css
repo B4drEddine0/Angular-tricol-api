@@ -1,26 +1,56 @@
-mat-dialog-content { 
-  padding-top: 24px !important; 
+/* Delivery Note Form Dialog */
+mat-dialog-content {
+  padding-top: 20px !important;
 }
 
-form { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 12px; 
-  min-width: 500px; 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 520px;
 }
 
-mat-form-field { 
-  width: 100%; 
+mat-form-field {
+  width: 100%;
 }
 
-.delivery-line { 
-  display: grid; 
-  grid-template-columns: 2fr 1fr auto; 
-  gap: 8px; 
-  align-items: start; 
-  margin-bottom: 8px; 
+.delivery-line {
+  display: grid;
+  grid-template-columns: 2fr 1fr auto;
+  gap: 10px;
+  align-items: start;
+  margin-bottom: 6px;
+  padding: 10px 12px;
+  background: var(--surface-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-primary);
+  transition: var(--transition-base);
 }
 
-h3 { 
-  margin: 16px 0 8px; 
+.delivery-line:hover {
+  border-color: var(--border-secondary);
+}
+
+h3 {
+  margin: 18px 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: var(--radius-lg) !important;
+}
+
+::ng-deep .mat-mdc-dialog-title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+}
+
+::ng-deep .mat-mdc-dialog-actions {
+  padding: 12px 24px 20px !important;
+  gap: 8px;
 }

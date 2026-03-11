@@ -1,29 +1,34 @@
-.page-header { 
-  margin-bottom: 24px; 
+.page-header {
+  margin-bottom: var(--space-6);
 }
 
-h1 { 
-  margin: 0; 
-  color: #1e293b; 
+h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
 }
 
-table { 
-  width: 100%; 
-  background: white; 
+table {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  animation: fadeInUp 0.4s ease-out 0.1s both;
 }
 
-.role-chip { 
-  margin: 2px; 
-  background: #dbeafe; 
-  color: #1e40af; 
+.role-chip {
+  margin: 2px;
+  background: var(--tricol-primary-100) !important;
+  color: var(--tricol-primary-700) !important;
 }
 
-.status-active { 
-  background: #d1fae5; 
-  color: #065f46; 
+.status-active {
+  background: var(--tricol-success-light) !important;
+  color: var(--tricol-success-dark) !important;
 }
 
-.status-inactive { 
-  background: #fee2e2; 
-  color: #991b1b; 
+.status-inactive {
+  background: var(--tricol-error-light) !important;
+  color: var(--tricol-error-dark) !important;
 }
